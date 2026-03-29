@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 25% 14%;
+
+    --card: 210 20% 98%;
+    --card-foreground: 220 25% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 14%;
+
+    --primary: 215 90% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 220 25% 14%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 15% 46%;
+
+    --accent: 160 70% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 90%;
+    --input: 215 20% 90%;
+    --ring: 215 90% 42%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 220 25% 14%;
+    --sidebar-primary: 215 90% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 25% 95%;
+    --sidebar-accent-foreground: 220 25% 14%;
+    --sidebar-border: 215 20% 90%;
+    --sidebar-ring: 215 90% 42%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 210 20% 90%;
+    --card: 220 18% 13%;
+    --card-foreground: 210 20% 90%;
+    --popover: 220 18% 13%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 215 90% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 16% 18%;
+    --secondary-foreground: 210 20% 90%;
+    --muted: 220 14% 16%;
+    --muted-foreground: 215 15% 55%;
+    --accent: 160 70% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 90%;
+    --border: 220 14% 20%;
+    --input: 220 14% 20%;
+    --ring: 215 90% 52%;
+    --sidebar-background: 220 18% 8%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 215 90% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 16% 18%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 14% 20%;
+    --sidebar-ring: 215 90% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px hsl(215 90% 42% / 0.12);
+    border-color: hsl(215 90% 42% / 0.4);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(215 90% 42%) 0%, hsl(200 85% 50%) 50%, hsl(160 70% 38%) 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(215 90% 42%), hsl(160 70% 38%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-card {
+    @apply rounded-xl border border-border bg-card p-6 text-center transition-all duration-300;
+  }
+
+  .stat-card:hover {
+    box-shadow: 0 4px 20px hsl(215 90% 42% / 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
