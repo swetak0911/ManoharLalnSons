@@ -1,8 +1,7 @@
-import hdpeImg from "@/assets/hdpe-granules.jpg";
-import ldpeImg from "@/assets/ldpe-granules.jpg";
-import ppImg from "@/assets/pp-granules.jpg";
-import pvcImg from "@/assets/pvc-compound.jpg";
-import hdpeblack from "@/assets/hdpe-black.png";
+import newhdpeB from "@/assets/newhdpegranule.jpg";
+import ldpeB from "@/assets/ldpe-granuals.jpg";
+import newpp from "@/assets/newnaturalpp.jpg";
+import cpWhite from "@/assets/cp-white.jpg";
 import hdpeWhite from "@/assets/hdpe-white.png";
 import hdpeRed from "@/assets/hdpe-red.png";
 import hdpeGreen from "@/assets/hdpe-green.png";
@@ -48,8 +47,8 @@ export const products: Product[] = [
     name: "HDPE Granules",
     shortDescription: "High-density polyethylene granules for robust industrial applications including pipes, containers, and packaging.",
     detailedDescription: "HDPE (High-Density Polyethylene) granules are high-performance thermoplastic raw materials known for excellent strength, chemical resistance, and durability. Suitable for blow molding, pipe extrusion, injection molding, and packaging applications, our HDPE granules ensure consistent quality, superior processing, and long-term industrial performance.",
-    image: hdpeImg,
-    gallery: [hdpeImg],
+    image: newhdpeB,
+    gallery: [newhdpeB],
     moq: "1000 Kg",
     applications: [
       "Blow Molding",
@@ -177,8 +176,8 @@ export const products: Product[] = [
     id: "ldpe-granules",
     name: "LDPE Granules",
     shortDescription: "Low-density polyethylene granules with excellent flexibility, ideal for films, packaging, and coatings.",
-    image: ldpeImg,
-    gallery: [ldpeImg],
+    image: ldpeB,
+    gallery: [ldpeB],
     moq: "1000 Kg",
     applications: [
       "Packaging Films",
@@ -200,8 +199,8 @@ export const products: Product[] = [
     name: "PP Granules",
     shortDescription: "Polypropylene granules offering high chemical resistance for automotive, textiles, and consumer goods.",
     detailedDescription: "PP (Polypropylene) Granules are versatile, reprocessed thermoplastic raw materials known for their excellent chemical resistance, durability, and heat stability. Ideal for injection molding, extrusion, and blow molding applications, our PP granules deliver consistent quality and cost-effective performance for automotive parts, packaging, containers, household goods, and industrial components.",
-    image: ppImg,
-    gallery: [ppImg],
+    image: newpp,
+    gallery: [newpp],
     moq: "1000 Kg",
     applications: [
       "Injection Molding",
@@ -355,11 +354,11 @@ export const products: Product[] = [
   },
   {
     id: "pvc-compound",
-    name: "HD Plastic Granules",
-    shortDescription: "Premium HD plastic granules engineered for pipes, profiles, cables, and construction applications.",
-    detailedDescription: "HD (High-Density) Plastic Granules are versatile, high-performance thermoplastic raw materials made from recycled HDPE. Known for their exceptional strength, rigidity, and chemical resistance, these granules are ideal for injection molding, extrusion, and blow molding processes. Our HD plastic granules deliver consistent quality for containers, bottles, pipes, plastic films, toys, furniture, automotive parts, and a wide range of industrial applications.",
-    image: pvcImg,
-    gallery: [pvcImg],
+    name: "CP Plastic Granules",
+    shortDescription: "Premium CP plastic granules engineered for pipes, profiles, cables, and construction applications.",
+    detailedDescription: "HD (High-Density) Plastic Granules are versatile, high-performance thermoplastic raw materials made from recycled HDPE. Known for their exceptional strength, rigidity, and chemical resistance, these granules are ideal for injection molding, extrusion, and blow molding processes. Our CP plastic granules deliver consistent quality for containers, bottles, pipes, plastic films, toys, furniture, automotive parts, and a wide range of industrial applications.",
+    image: cpWhite,
+    gallery: [cpWhite],
     moq: "1000 Kg",
     applications: [
       "Containers",

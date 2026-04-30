@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
-import Logo from "@/components/Logo";
 
 const Footer = () => (
   <footer className="border-t border-border bg-foreground text-background">
@@ -64,7 +63,7 @@ const Footer = () => (
           </li>
           <li className="flex items-center gap-2.5">
             <Mail size={14} className="text-primary shrink-0" />
-            info@mlspolymer.com
+            info@manoharlalandsonspolymer.com
           </li>
           <li className="flex items-start gap-2.5">
             <MapPin size={14} className="mt-0.5 text-primary shrink-0" />

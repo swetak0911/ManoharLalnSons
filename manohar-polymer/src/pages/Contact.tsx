@@ -13,31 +13,108 @@ const Contact = () => {
   const [rating, setRating] = useState(0);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast({
-        title: "Message Sent!",
-        description: "We'll respond within 24 hours.",
-      });
-      (e.target as HTMLFormElement).reset();
-    }, 800);
+  const FORMSPREE_CONTACT_URL = import.meta.env.VITE_FORMSPREE_CONTACT_URL as string | undefined;
+  const FORMSPREE_FEEDBACK_URL = import.meta.env.VITE_FORMSPREE_FEEDBACK_URL as string | undefined;
+
+  const postJson = async (url: string, payload: Record<string, unknown>) => {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      throw new Error(`Request failed: ${res.status}`);
+    }
+    return res;
   };
 
-  const handleFeedbackSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!FORMSPREE_CONTACT_URL) {
+      toast({
+        title: "Configuration missing",
+        description: "Contact form endpoint is not configured.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+    const formEl = e.currentTarget;
+    const formData = new FormData(formEl);
+
+    const payload = {
+      formType: "contact",
+      submittedAt: new Date().toISOString(),
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      phone: String(formData.get("phone") || ""),
+      product: String(formData.get("product") || ""),
+      message: String(formData.get("message") || ""),
+    };
+
+    try {
+      await postJson(FORMSPREE_CONTACT_URL, payload);
+
+      toast({
+        title: "Message Sent!",
+        description: "Owner has received your message. We'll respond within 24 hours.",
+      });
+      formEl.reset();
+    } catch (error) {
+      toast({
+        title: "Send failed",
+        description: "Could not send your message. Please try again.",
+        variant: "destructive",
+      });
+      console.error("Contact submit failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFeedbackSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!FORMSPREE_FEEDBACK_URL) {
+      toast({
+        title: "Configuration missing",
+        description: "Feedback form endpoint is not configured.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setFeedbackLoading(true);
-    setTimeout(() => {
-      setFeedbackLoading(false);
+    const formEl = e.currentTarget;
+    const formData = new FormData(formEl);
+
+    const payload = {
+      formType: "feedback",
+      submittedAt: new Date().toISOString(),
+      name: String(formData.get("fb-name") || ""),
+      rating,
+      feedback: String(formData.get("fb-message") || ""),
+    };
+
+    try {
+      await postJson(FORMSPREE_FEEDBACK_URL, payload);
+
       setRating(0);
       toast({
         title: "Feedback Submitted!",
-        description: "Thank you for sharing your experience with us.",
+        description: "Thank you. Owner has received your feedback.",
       });
-      (e.target as HTMLFormElement).reset();
-    }, 800);
+      formEl.reset();
+    } catch (error) {
+      toast({
+        title: "Submit failed",
+        description: "Could not submit feedback. Please try again.",
+        variant: "destructive",
+      });
+      console.error("Feedback submit failed:", error);
+    } finally {
+      setFeedbackLoading(false);
+    }
   };
 
   return (
@@ -134,7 +211,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Email</p>
-                      <p className="font-medium text-foreground">info@mlspolymer.com</p>
+                      <p className="font-medium text-foreground">info@manoharlalandsonspolymer.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
