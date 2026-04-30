@@ -1,5 +1,5 @@
 import newhdpeB from "@/assets/newhdpegranule.jpg";
-import ldpeB from "@/assets/ldpe-granuals.jpg";
+import ldpeB from "@/assets/ldpe-granules.jpg";
 import newpp from "@/assets/newnaturalpp.jpg";
 import cpWhite from "@/assets/cp-white.jpg";
 import hdpeWhite from "@/assets/hdpe-white.png";
